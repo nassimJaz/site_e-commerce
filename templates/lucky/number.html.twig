@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lucky Number - My Symfony App{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <div class="card shadow-sm border-primary">
+            <div class="card-body py-5">
+                <h1 class="h4 text-muted mb-4">Your lucky number is</h1>
+                <div class="display-1 fw-bold text-primary mb-4">
+                    {{ number }}
+                </div>
+                <p class="text-muted">Feeling lucky? Refresh the page for a new number!</p>
+                <a href="{{ path(app.request.attributes.get('_route')) }}" class="btn btn-outline-primary mt-3">Try Again</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

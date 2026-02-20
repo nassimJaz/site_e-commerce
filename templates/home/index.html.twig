@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome - My Symfony App{% endblock %}
+
+{% block body %}
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
+    <div class="container-fluid py-5 text-center">
+        <h1 class="display-5 fw-bold">Welcome to your Symfony Project!</h1>
+        <p class="col-md-12 fs-4 mx-auto mt-3">
+            This is a beautiful base template powered by Bootstrap 5 and Symfony AssetMapper.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg px-4 gap-3">Contact Page</a>
+            <a href="/lucky/number" class="btn btn-outline-secondary btn-lg px-4">Get Lucky Number</a>
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-md-stretch mt-4">
+    <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3 shadow-sm">
+            <h2>Fast Performance</h2>
+            <p>Leverage the power of Symfony 8 and AssetMapper for a lightweight and lightning-fast developer experience without the complexity of Webpack.</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="h-100 p-5 bg-white border rounded-3 shadow-sm">
+            <h2>Modern Design</h2>
+            <p>Responsive, accessible, and clean design using Bootstrap 5. Easy to customize and extend for your own brand and needs.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - My Symfony App{% endblock %}
+
+{% block body %}
+
+
+<div class="card-body card shadow-sm">
+    <div class="row justify-content-center">
+
+    <h1 class="card-title h3 mb-4"> Contactez nous</h1>
+
+    {{form_start(contactForm)}}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(contactForm.firstname)}}
+        </div>
+        <div class="col-6">
+            {{ form_row(contactForm.lastname)}}
+        </div>
+        <div class="col-6">
+            {{ form_row(contactForm.phone)}}
+        </div>
+        <div class="col-6">
+            {{ form_row(contactForm.email)}}
+        </div>
+        <div class="col-6">
+            {{ form_row(contactForm.content)}}
+        </div>
+    
+    </div>
+    {{form_end(contactForm)}}
+    
+    </div>
+</div>
+
+{% endblock %}
