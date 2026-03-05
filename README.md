@@ -1,4 +1,4 @@
-# 👜 Boutique Symfony - Projet Test
+# 👜 Boutique Symfony - Site E-commerce
 
 Bienvenue dans ce projet de boutique en ligne développé avec **Symfony 8.0**. Ce projet sert de base pour démontrer les fonctionnalités essentielles d'un catalogue de produits avec gestion de panier et formulaire de contact.
 
