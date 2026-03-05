@@ -1,37 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact - My Symfony App{% endblock %}
+{% block title %}Contact — LUXE SAC{% endblock %}
 
 {% block body %}
-
-
-<div class="card-body card shadow-sm">
+<section class="py-3">
     <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="section-title">Contactez-nous</h1>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Une question ? Nous sommes à votre écoute.</p>
+            </div>
 
-    <h1 class="card-title h3 mb-4"> Contactez nous</h1>
+            <div class="contact-card">
+                {{ form_start(contactForm, {'attr': {'class': 'contact-form'}}) }}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        {{ form_row(contactForm.firstname, {
+                            'attr': {'class': 'form-control form-control-luxe', 'placeholder': 'Votre prénom'},
+                            'label_attr': {'class': 'form-label-luxe'}
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(contactForm.lastname, {
+                            'attr': {'class': 'form-control form-control-luxe', 'placeholder': 'Votre nom'},
+                            'label_attr': {'class': 'form-label-luxe'}
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(contactForm.phone, {
+                            'attr': {'class': 'form-control form-control-luxe', 'placeholder': '+33 1 23 45 67 89'},
+                            'label_attr': {'class': 'form-label-luxe'}
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(contactForm.email, {
+                            'attr': {'class': 'form-control form-control-luxe', 'placeholder': 'votre@email.com'},
+                            'label_attr': {'class': 'form-label-luxe'}
+                        }) }}
+                    </div>
+                    <div class="col-12">
+                        {{ form_row(contactForm.content, {
+                            'attr': {'class': 'form-control form-control-luxe', 'rows': 5, 'placeholder': 'Décrivez votre demande...'},
+                            'label_attr': {'class': 'form-label-luxe'}
+                        }) }}
+                    </div>
+                    <div class="col-12 text-center mt-3">
+                        <button type="submit" class="btn btn-luxe btn-lg px-5">
+                            <i class="bi bi-send me-2"></i>Envoyer
+                        </button>
+                    </div>
+                </div>
+                {{ form_end(contactForm) }}
+            </div>
 
-    {{form_start(contactForm)}}
-    <div class="row">
-        <div class="col-6">
-            {{ form_row(contactForm.firstname)}}
+            {# Infos de contact #}
+            <div class="row g-4 mt-5">
+                <div class="col-md-4">
+                    <div class="contact-info-card text-center p-4">
+                        <i class="bi bi-geo-alt contact-info-icon"></i>
+                        <h6 class="mt-3">Adresse</h6>
+                        <small class="text-muted">12 Rue de la Paix, 75002 Paris</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-card text-center p-4">
+                        <i class="bi bi-envelope contact-info-icon"></i>
+                        <h6 class="mt-3">Email</h6>
+                        <small class="text-muted">contact@luxesac.fr</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-card text-center p-4">
+                        <i class="bi bi-telephone contact-info-icon"></i>
+                        <h6 class="mt-3">Téléphone</h6>
+                        <small class="text-muted">+33 1 23 45 67 89</small>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-6">
-            {{ form_row(contactForm.lastname)}}
-        </div>
-        <div class="col-6">
-            {{ form_row(contactForm.phone)}}
-        </div>
-        <div class="col-6">
-            {{ form_row(contactForm.email)}}
-        </div>
-        <div class="col-6">
-            {{ form_row(contactForm.content)}}
-        </div>
-    
     </div>
-    {{form_end(contactForm)}}
-    
-    </div>
-</div>
-
+</section>
 {% endblock %}

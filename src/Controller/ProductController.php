@@ -1,35 +1,50 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Product;
+
 use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ProductController extends AbstractController
 {
-   #[Route('/nos-produits', name: 'app_products')]
-    public function all(ProductRepository $repo): Response
+    #[Route('/boutique', name: 'app_boutique')]
+    public function index(Request $request, ProductRepository $productRepository): Response
     {
-        $products = $repo->findAll();
+        $category = $request->query->get('category');
 
-        return $this->render('product/all.html.twig', [
+        if ($category) {
+            $products = $productRepository->findBy(['category' => $category]);
+        } else {
+            $products = $productRepository->findAll();
+        }
+
+        // Récupérer les catégories uniques pour le filtre
+        $allProducts = $productRepository->findAll();
+        $categories = array_unique(array_map(
+            fn($p) => $p->getCategory(),
+            $allProducts,
+        ));
+
+        return $this->render('product/index.html.twig', [
             'products' => $products,
+            'categories' => $categories,
+            'currentCategory' => $category,
         ]);
     }
 
-    #[Route('/produit/{id}', name: 'app_product')]
-    public function index(int $id, ProductRepository $repo): Response
+    #[Route('/produit/{id}', name: 'app_product_show')]
+    public function show(int $id, ProductRepository $productRepository): Response
     {
-        $product = $repo->find($id);
+        $product = $productRepository->find($id);
 
         if (!$product) {
-            throw $this->createNotFoundException('Produit non trouvÃ©');
+            throw $this->createNotFoundException('Produit introuvable.');
         }
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);
     }
